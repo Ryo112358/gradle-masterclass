@@ -1,3 +1,0 @@
-task ('hello').doLast {
-	println "Gradle says Hello! ^.^"
-}

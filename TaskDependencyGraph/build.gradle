@@ -1,0 +1,73 @@
+defaultTasks 'TlokIntroP5';
+
+
+
+// --- Avatar: The Last Airbender -----------------------------------------------
+
+task AtlaIntroBendingScene {
+	doLast {
+		println(">>> Water. Earth. Fire. Air.");
+	}
+}
+
+task AtlaIntroP1 () {
+	doLast {
+		println(">>> Long ago, the four nations lived together in harmony. Then, everything changed when the Fire Nation attacked.");
+	}
+}
+
+task AtlaIntroP2 ()  {
+	doLast {
+		println(">>> Only the Avatar, master of all four elements, could stop them, but when the world needed him most, he vanished.");
+	}
+}
+
+task AtlaIntroP3 () {
+	doLast {
+		println(">>> A hundred years passed and my brother and I discovered the new Avatar, an airbender named Aang, and although his airbending skills are great, he has a lot to learn before he's ready to save anyone.");
+	}
+}
+
+task AtlaIntroP4 (dependsOn: project.tasks.findAll { task -> task.name.startsWith('AtlaIntro') }) {
+	doLast {
+		println(">>> But I believe Aang can save the world.");
+	}
+}
+
+// --- The Legend of Korra --------------------------------------------------
+
+task TlokIntroBendingScene () {
+	doLast {
+		println(">>> Earth. Fire. Air. Water.");
+	}
+}
+
+task TlokIntroP1 () {
+	doLast {
+		println(">>> When I was a boy, my father, Avatar Aang, told me the story of how he and his friends heroically ended the Hundred Year War.");
+	}
+}
+
+task TlokIntroP2 () {
+	doLast {
+		println(">>> Avatar Aang and Fire Lord Zuko transformed the Fire Nation colonies into the United Republic of Nations, a society where benders and nonbenders from all over the world could live and thrive together in peace and harmony.");
+	}
+}
+
+task TlokIntroP4 () {
+	doLast {
+		println(">>> Avatar Aang accomplished many remarkable things in his life, but sadly, his time in this world came to an end.");
+	}
+}
+
+task TlokIntroP3 () {
+	doLast {
+		println(">>> They named the capital of this great land Republic City.");
+	}
+}
+
+task TlokIntroP5 (dependsOn: project.tasks.findAll { task -> task.name.startsWith('TlokIntro') }) {
+	doLast {
+		println(">>> And like the cycle of the seasons, the cycle of the Avatar began anew.");
+	}
+}

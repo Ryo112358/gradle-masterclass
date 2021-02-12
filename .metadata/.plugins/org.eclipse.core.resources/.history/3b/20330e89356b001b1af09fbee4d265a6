@@ -1,9 +1,0 @@
-import java.text.SimpleDateFormat;
-
-defaultTasks 'hello';
-
-SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy'T'HH:mm:ss");
-
-task ('hello').doLast {
-	println "Gradle says Hello! ^.^";
-};

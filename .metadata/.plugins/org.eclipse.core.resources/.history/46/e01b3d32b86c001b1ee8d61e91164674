@@ -1,7 +1,0 @@
-defaultTasks 'hello';
-
-task ('hello').doLast {
-	println "Gradle says Hello! ^.^";
-}
-
-logger.info("Hello Logger!");

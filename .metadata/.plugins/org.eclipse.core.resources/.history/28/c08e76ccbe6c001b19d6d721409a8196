@@ -1,1 +1,0 @@
-logger.info ">>> settings.gradle -> Settings script reached! Gradle v${project.gradle.gradleVersion}";
