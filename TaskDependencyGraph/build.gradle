@@ -1,5 +1,4 @@
-defaultTasks 'TlokIntroP5';
-
+defaultTasks 'AtlaIntroP4';
 
 
 // --- Avatar: The Last Airbender -----------------------------------------------
@@ -10,31 +9,47 @@ task AtlaIntroBendingScene {
 	}
 }
 
-task AtlaIntroP1 () {
+task AtlaIntroP1 {
 	doLast {
 		println(">>> Long ago, the four nations lived together in harmony. Then, everything changed when the Fire Nation attacked.");
 	}
 }
 
-task AtlaIntroP2 ()  {
+AtlaIntroP1.dependsOn(AtlaIntroBendingScene);
+
+task AtlaIntroP2 {
 	doLast {
 		println(">>> Only the Avatar, master of all four elements, could stop them, but when the world needed him most, he vanished.");
 	}
 }
 
-task AtlaIntroP3 () {
+task AtlaIntroP3 (dependsOn: ['AtlaIntroP1', 'AtlaIntroP2']) {
 	doLast {
 		println(">>> A hundred years passed and my brother and I discovered the new Avatar, an airbender named Aang, and although his airbending skills are great, he has a lot to learn before he's ready to save anyone.");
 	}
 }
 
-task AtlaIntroP4 (dependsOn: project.tasks.findAll { task -> task.name.startsWith('AtlaIntro') }) {
+// AtlaIntroP3.dependsOn(AtlaIntroP1, AtlaIntroP2);	// Equivalent to above
+
+task AtlaIntroP4 (dependsOn: 'AtlaIntroP3') {
 	doLast {
 		println(">>> But I believe Aang can save the world.");
 	}
 }
 
-// --- The Legend of Korra --------------------------------------------------
+// --- Example of Dependency based on Conditional Logic
+
+task TlokPostPilotIntro {
+	doLast {
+		println(">>> Earth. Fire. Air. Water. Only the Avatar can master all four elements and bring balance to the world.");
+	}
+}
+
+if (Math.random() < 0.6) {
+	TlokPostPilotIntro.dependsOn(AtlaIntroP4);
+}
+
+// --- The Legend of Korra: Filtering with a Closure -----------------------------------------------
 
 task TlokIntroBendingScene () {
 	doLast {
@@ -70,4 +85,25 @@ task TlokIntroP5 (dependsOn: project.tasks.findAll { task -> task.name.startsWit
 	doLast {
 		println(">>> And like the cycle of the seasons, the cycle of the Avatar began anew.");
 	}
+}
+
+// --- Hooking into the Task Dependency Graph -----------------------------------------
+
+project.gradle.taskGraph.whenReady { taskGraph ->
+	if (taskGraph.hasTask(AtlaIntroBendingScene)) {
+		project.version = '1.0';
+	} else {
+		project.version = '1.0-SNAPSHOT';
+	}
+	
+	println(">>> Project Version: ${project.version}");
+	println(">>> Task Execution Order: ${project.gradle.taskGraph.allTasks}");
+}
+
+gradle.taskGraph.beforeTask { task -> 
+	println "+++ Before task: $task.name";
+}
+
+gradle.taskGraph.afterTask { task -> 
+	println "+++ After task: $task.name";
 }
