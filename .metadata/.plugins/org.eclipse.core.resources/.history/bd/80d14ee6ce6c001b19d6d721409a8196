@@ -1,0 +1,7 @@
+defaultTasks 'hello';
+
+
+task ('hello').doLast {
+	println "Gradle says Hello! ^.^";
+	logger.quiet("Hello Logger!");
+}

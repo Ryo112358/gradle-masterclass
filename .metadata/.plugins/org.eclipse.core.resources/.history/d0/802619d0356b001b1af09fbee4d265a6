@@ -1,0 +1,10 @@
+import java.text.SimpleDateFormat;
+
+defaultTasks 'hello';
+
+SimpleDateFormat sdf = new SimpleDateFormat("ddMMMyyyy 'T'HH:mm:ss");
+sdf.setTimeZone(TimeZone.getTimeZone("EST"));
+
+task ('hello').doLast {
+	println "Gradle says Hello! ^.^ " + sdf.format(new Date());
+};

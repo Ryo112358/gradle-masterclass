@@ -1,0 +1,10 @@
+logger.info ">>> build.gradle -> Global build script reached!";
+logger.info ">>> Gradle v${project.gradle.gradleVersion}";
+
+
+defaultTasks 'hello';
+
+task ('hello').doLast {
+	println "Gradle says Hello! ^.^";
+	logger.info("Hello Logger!");
+}

@@ -1,0 +1,13 @@
+logger.info ">>> build.gradle -> Global build script reached!";
+logger.info ">>> Gradle v${project.gradle.gradleVersion}";
+logger.info ">>> Home Dir: v${project.gradle.gradleHomeDir}";
+logger.info ">>> User Home Dir: v${project.gradle.gradleUserHomeDir}";
+
+
+
+defaultTasks 'hello';
+
+task ('hello').doLast {
+	println "Gradle says Hello! ^.^";
+	logger.info("Hello Logger!");
+}

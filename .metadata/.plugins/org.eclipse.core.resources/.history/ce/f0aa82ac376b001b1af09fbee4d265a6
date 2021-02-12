@@ -1,0 +1,20 @@
+import java.text.SimpleDateFormat;
+
+defaultTasks 'hello';
+
+SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy 'T'HH:mm:ss");
+sdf.setTimeZone(TimeZone.getTimeZone("EST"));
+
+task ('hello').doLast {
+	println "Gradle says Hello! ^.^ " + sdf.format(new Date());
+};
+
+helloGradle();
+
+void helloGradle() {
+	println "Hello Gradle!";
+}
+
+int double(int i) {
+	i*2;	// return is optional, last line in method automatically returned
+}

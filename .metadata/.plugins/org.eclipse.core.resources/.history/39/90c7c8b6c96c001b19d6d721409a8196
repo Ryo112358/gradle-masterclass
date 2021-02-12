@@ -1,0 +1,29 @@
+logger.info ">>> ${relativePath(buildFile)} -> Global build script reached!";
+logger.info ">>> build.gradle: ${project.gradle.gradleUserHomeDir}";
+logger.info ">>> build.gradle: $gradle.gradleHomeDir";
+
+
+logger.info """
+***********************************************************
+Welcome to Gradle $gradle.gradleVersion - http://www.gradle.org
+Gradle home is set to: $gradle.gradleHomeDir
+Gradle user directory is set to: $gradle.gradleUserHomeDir
+
+Running script: ${project.relativePath(project.buildFile)}
+Base directory: $projectDir
+***********************************************************
+"""
+
+
+defaultTasks 'hello';
+
+task ('hello').doLast {
+	println "Gradle says Hello! ^.^";
+	logger.quiet("Hello Logger!");
+}
+
+if (project.hasProperty('eartNationCapital')) {
+	logger.info "The capital of the Earth kingdom is ${earthNationCapital}!";
+} else {
+	logger.info "The earth nation has fallen... ~.~";
+}
