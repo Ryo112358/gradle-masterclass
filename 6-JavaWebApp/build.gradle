@@ -1,0 +1,61 @@
+plugins {
+  id 'java'
+  id 'war'
+}
+
+defaultTasks 'clean', 'build';
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'com.denofprogramming'
+version = '0.0.1-SNAPSHOT'
+
+
+war {
+	archiveFileName = '6-NumGenWebApp.war'
+}
+
+repositories{
+	mavenCentral()
+}
+
+dependencies { 
+
+	implementation 'org.springframework:spring-webmvc:4.0.3.RELEASE'
+	implementation 'javax.inject:javax.inject:1'
+	implementation 'org.apache.commons:commons-math3:3.2'
+	implementation 'jstl:jstl:1.2'
+	implementation 'log4j:log4j:1.2.17'
+		
+	/*
+	 * 'compileOnly' is similar to the Maven scope of 'provided'
+	 *     Means that the dependency doesn't need to be provided by war file
+	 *     It'll be provided by the servlet container
+	 */
+	compileOnly "javax.servlet:javax.servlet-api:3.0.1"
+	testImplementation	'junit:junit:4.11'
+
+}
+
+// --- Custom Tasks -------------------------------------------
+
+// DEBUG: This app does not work with Tomcat 10... WHY?!
+/*     From Tomcat 10 Docs:
+ * "There is a significant breaking change between Tomcat 9.0.x and Tomcat 10.0.x.
+ * The Java package used by the specification APIs has changed from javax... to jakarta.... 
+ * It will be necessary to recompile web applications against the new APIs."
+ */
+
+task deployToTomcat9(type: Copy, dependsOn: 'war') {
+	println ">>> $war.archiveFile"
+	// Output: >>> property(interface org.gradle.api.file.RegularFile, combine(task ':war' property 'destinationDirectory', task ':war' property 'archiveFileName')) ... WHY, I want the path? ~.~
+	println ">>> ${war.destinationDirectory}/${war.archiveFileName}"	// Attempt 2: No success X_x
+	// Output: >>> task ':war' property 'destinationDirectory'/task ':war' property 'archiveFileName'
+	println ">>> $project.tomcat9Home/webapps"
+	// Output: >>> C:/Apache/apache-tomcat-9.0.43/webapps
+	
+	from war.archiveFile;	// 'from war' will also work
+	into "$tomcat9Home/webapps";
+}

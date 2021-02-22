@@ -14,10 +14,10 @@ project.group = 'com.denofprogramming';
 
 dependencies {
 	// https://mvnrepository.com/artifact/org.apache.commons/commons-math3
-	implementation 'org.apache.commons:commons-math3:3.6.1';	//Shorthand, colon-separated
+	implementation 'org.apache.commons:commons-math3:3.6.1';	//Short-hand, colon-separated
 	
 	// https://mvnrepository.com/artifact/junit/junit
-	testImplementation group: 'junit', name: 'junit', version: '4.13.1';	//Longhand
+	testImplementation group: 'junit', name: 'junit', version: '4.13.1';	//Long-hand
 }
 
 project.jar {
@@ -32,6 +32,7 @@ project.jar {
 		);	
 	}
 	
+	// The snippet below includes all program dependencies in the jar build
 	from {
 		project.configurations.runtimeClasspath.collect {File file -> project.zipTree(file)};
 	}
