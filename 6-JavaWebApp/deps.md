@@ -34,6 +34,9 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 
 ```
 runtimeClasspath - Runtime classpath of source set 'main'.
++--- jstl:jstl:1.2
++--- javax.inject:javax.inject:1
++--- org.apache.commons:commons-math3:3.2
 +--- org.springframework:spring-webmvc:4.0.3.RELEASE
 |    +--- org.springframework:spring-beans:4.0.3.RELEASE
 |    |    \--- org.springframework:spring-core:4.0.3.RELEASE
@@ -55,11 +58,7 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 |         \--- org.springframework:spring-core:4.0.3.RELEASE
 +--- org.slf4j:jcl-over-slf4j:1.7.25
 |    \--- org.slf4j:slf4j-api:1.7.25
-+--- org.slf4j:slf4j-log4j12:1.7.25
-|    +--- org.slf4j:slf4j-api:1.7.25
-|    \--- log4j:log4j:1.2.17
-+--- javax.inject:javax.inject:1
-+--- org.apache.commons:commons-math3:3.2
-+--- jstl:jstl:1.2
-\--- log4j:log4j:1.2.17
+\--- org.slf4j:slf4j-log4j12:1.7.25
+     +--- org.slf4j:slf4j-api:1.7.25
+     \--- log4j:log4j:1.2.17
 ```
