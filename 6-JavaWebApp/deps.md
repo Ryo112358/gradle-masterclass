@@ -2,7 +2,7 @@
 
 ## End Section 10
 
-<p>
+```
 runtimeClasspath - Runtime classpath of source set 'main'.
 +--- org.springframework:spring-webmvc:4.0.3.RELEASE
 |    +--- org.springframework:spring-beans:4.0.3.RELEASE
@@ -28,11 +28,11 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 +--- org.apache.commons:commons-math3:3.2
 +--- jstl:jstl:1.2
 \--- log4j:log4j:1.2.17
-</p>
+```
 
 ## End Section 11
 
-<p>
+```
 runtimeClasspath - Runtime classpath of source set 'main'.
 +--- org.springframework:spring-webmvc:4.0.3.RELEASE
 |    +--- org.springframework:spring-beans:4.0.3.RELEASE
@@ -62,4 +62,4 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 +--- org.apache.commons:commons-math3:3.2
 +--- jstl:jstl:1.2
 \--- log4j:log4j:1.2.17
-</p>
+```
