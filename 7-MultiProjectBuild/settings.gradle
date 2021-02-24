@@ -1,0 +1,3 @@
+include 'numberPickerApp', 'plusPlus', 'randNumGen'
+
+rootProject.name = '7-MultiProjectBuild'
