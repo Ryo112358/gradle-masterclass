@@ -1,8 +1,12 @@
 subprojects {
 
 	apply plugin: 'java-library'
-//	apply plugin: 'findbugs'
-//	apply plugin: 'pmd'
+	// apply plugin: 'pmd'
+	
+	/* 'findbugs' plugin deprecated
+	 * SpotBugs also not found by Gradle :(
+	 */
+	// apply plugin: "com.github.spotbugs" version "${spotbugsPluginVersion}"
 
     
 	description = 'Teaching Academy Root Project'
@@ -21,26 +25,8 @@ subprojects {
     	testImplementation 'org.springframework:spring-test:4.0.3.RELEASE'    	
         testImplementation	'junit:junit:4.12'
     }
-    
-/*    
-    //FindBugs
-   
-    findbugs {
-    	toolVersion = "3.0.1"
-    	ignoreFailures = true
-    	reportLevel = "high"
-    	reportsDir = file("$project.buildDir/findbugsReports")
-    	
-    }
-    
-    tasks.withType(FindBugs) {
-   	 reports {
-    	    xml.enabled false
-        	html.enabled true 
-    	}
-	}
-   	
-    	
+
+/*
 	//PMD
 	
 	pmd {
@@ -73,9 +59,28 @@ subprojects {
 	        html.enabled=true
 	    }
 	}
-	
 */
-	
+
+/*    
+    //FindBugs
+   
+    findbugs {
+    	toolVersion = "3.0.1"
+    	ignoreFailures = true
+    	reportLevel = "high"
+    	reportsDir = file("$project.buildDir/findbugsReports")
+    	
+    }
+    
+    tasks.withType(FindBugs) {
+   	 reports {
+    	    xml.enabled false
+        	html.enabled true 
+    	}
+	}
+
+*/
+
 }
 
 
