@@ -12,4 +12,34 @@ subprojects {
     repositories {
     	mavenCentral()
     }
+    
+}
+
+// --- Config for individual projects -----------------
+
+project(':numberPickerApp') {
+	dependencies {
+		implementation 'org.apache.commons:commons-math3:3.2'
+		implementation 'org.apache.logging.log4j:log4j-core:2.5'
+		testImplementation	'junit:junit:4.12'
+	}
+}
+
+project(':plusPlus') {
+	dependencies {
+		implementation project(':randNumGen')
+	}
+}
+
+project(':randNumGen') {
+	/* 'implementation' scope does not allow the reuse of a dependency in the importing module
+	 * The 'java-library' plugin provides 'api' scope to make dependencies reusable
+	 */
+	apply plugin: 'java-library'
+	
+	dependencies {
+		api 'org.apache.commons:commons-math3:3.2'
+		implementation 'org.apache.logging.log4j:log4j-core:2.5'
+		testImplementation	'junit:junit:4.12'
+	}
 }
