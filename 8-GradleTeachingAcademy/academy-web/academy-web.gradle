@@ -4,7 +4,7 @@ plugins {
 
 description = 'Teaching Academy Web Application.'
 
-ext.tomcatHome = 'C:/software/Apache Software Foundation/apache-tomcat-9.0.1'
+ext.tomcatHome = "C:/Apache/apache-tomcat-9.0.43"
 ext.tomcatWebapps = "$tomcatHome/webapps"
 
 
@@ -14,12 +14,12 @@ war{
 
 task deployToTomcat(type: Copy, dependsOn: 'build'){	
 	from war
-    into "$tomcatWebapps"	
+    into "$tomcatWebapps"
 }
 
 dependencies {
-	implementation 'org.springframework:spring-webmvc:4.0.3.RELEASE'	
+	implementation 'org.springframework:spring-webmvc:4.0.3.RELEASE'
 	implementation 'jstl:jstl:1.2'
-	implementation 'log4j:log4j:1.2.17'	
-	implementation "javax.servlet:javax.servlet-api:3.0.1"		
+	implementation 'log4j:log4j:1.2.17'
+	implementation 'javax.servlet:javax.servlet-api:3.0.1'
 }
